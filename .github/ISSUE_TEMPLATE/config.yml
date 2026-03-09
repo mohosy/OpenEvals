@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: GitHub Discussions
+    url: https://github.com/mohosy/OpenEvals/discussions
+    about: Share benchmark ideas, ask usage questions, or show what you built.
+  - name: Launch Playbook
+    url: https://github.com/mohosy/OpenEvals/blob/main/docs/launch-playbook.md
+    about: See the public launch and growth checklist.
+  - name: Security policy
+    url: https://github.com/mohosy/OpenEvals/blob/main/SECURITY.md
+    about: Report security issues privately instead of opening a public issue.

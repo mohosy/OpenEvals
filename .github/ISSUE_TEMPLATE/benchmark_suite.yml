@@ -1,0 +1,46 @@
+name: Benchmark suite
+description: Suggest or contribute a public eval suite other people can run and fork
+title: "[benchmark] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to propose a benchmark suite that would make OpenEvals more useful for other teams.
+  - type: input
+    id: domain
+    attributes:
+      label: Domain
+      description: What problem area does this suite cover?
+      placeholder: Support routing, RAG QA, extraction, summarization
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Why this suite matters
+      description: Explain why other OpenEvals users would want to run or fork it.
+    validations:
+      required: true
+  - type: textarea
+    id: shape
+    attributes:
+      label: Proposed suite shape
+      description: Describe the prompt shape, case inputs, and what should be scored.
+      placeholder: Single-turn prompt with JSON output; exact-match plus rubric-based checks
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References or sample data
+      description: Link to public examples, blog posts, docs, or existing prompts if relevant.
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution intent
+      options:
+        - label: I can contribute the YAML suite in a pull request
+        - label: I can help validate outputs on real-world cases
+

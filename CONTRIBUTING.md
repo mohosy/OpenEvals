@@ -15,6 +15,19 @@ Thanks for contributing to OpenEvals.
 - Keep pull requests focused and include before/after screenshots for UI changes.
 - Add or update tests for backend behavior and runner logic.
 - Prefer YAML suite examples that demonstrate realistic eval patterns.
+- If you contribute a public benchmark, make it safe to share and easy to fork.
+
+## Benchmark Contributions
+
+We want OpenEvals to develop a library of forkable eval suites.
+
+Strong benchmark contributions usually:
+
+- Cover a real production use case
+- Use public-safe or synthetic inputs
+- Include a short explanation of what success looks like
+- Combine deterministic checks with one or two rubric criteria when needed
+- Explain why the suite is useful outside one company
 
 ## Pull Request Checklist
 
@@ -22,4 +35,3 @@ Thanks for contributing to OpenEvals.
 - Backend tests pass.
 - `frontend` builds successfully.
 - Docs or examples are updated for visible behavior changes.
-
