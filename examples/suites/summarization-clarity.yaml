@@ -1,0 +1,29 @@
+version: "0.1"
+name: Summarization Clarity
+description: Benchmark concise summaries for helpfulness and factual compression.
+models:
+  - gpt-4o
+  - gpt-4.1
+tags:
+  - summarization
+prompt:
+  system: |
+    Summarize the text in at most three bullet points. Preserve factual details.
+  user: |
+    Passage:
+    {{passage}}
+judge:
+  - id: clarity
+    name: Clarity
+    rubric: Reward summaries that are concise, easy to scan, and faithful to the original text.
+  - id: completeness
+    name: Completeness
+    rubric: Reward summaries that preserve the most important facts without filler.
+cases:
+  - id: climate-report
+    inputs:
+      passage: "The report says emissions fell 3 percent year over year, but heavy industry remains above target and grid upgrades are behind schedule."
+  - id: roadmap-update
+    inputs:
+      passage: "The team shipped the API redesign, delayed analytics export to May, and added self-serve billing for new accounts."
+

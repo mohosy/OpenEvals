@@ -1,0 +1,40 @@
+version: "0.1"
+name: Structured Entity Extraction
+description: Test whether a prompt extracts purchase order data into a stable JSON shape.
+models:
+  - gpt-4o
+  - gpt-4.1
+tags:
+  - extraction
+  - json
+prompt:
+  system: |
+    Extract purchase order details from the provided text. Return JSON only.
+  user: |
+    Source text:
+    {{document}}
+assertions:
+  - id: schema
+    type: json_schema
+    expected:
+      type: object
+      required: [vendor, currency, total]
+      properties:
+        vendor:
+          type: string
+        currency:
+          type: string
+        total:
+          type: number
+judge:
+  - id: completeness
+    name: Completeness
+    rubric: Reward outputs that capture all core fields and avoid invented values.
+cases:
+  - id: acme-order
+    inputs:
+      document: "PO 991 from Acme Supply for replacement cables. Amount due USD 4200.00."
+  - id: euro-lab
+    inputs:
+      document: "Invoice text: Vendor MedLab GmbH. Total payable EUR 812.50. Ref 1108."
+

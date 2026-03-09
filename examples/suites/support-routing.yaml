@@ -1,0 +1,45 @@
+version: "0.1"
+name: Support Ticket Routing
+description: Evaluate whether a support triage prompt picks the right queue and urgency.
+models:
+  - gpt-4o
+  - gpt-4.1
+tags:
+  - support
+  - routing
+prompt:
+  system: |
+    You are a support triage assistant. Return compact JSON with keys "queue" and "priority".
+  user: |
+    Ticket:
+    {{ticket}}
+
+    Customer tier: {{tier}}
+assertions:
+  - id: queue-match
+    type: contains
+    expected: '"queue": "{{expected_queue}}"'
+judge:
+  - id: policy-adherence
+    name: Policy adherence
+    rubric: Reward the answer when the queue is sensible, the priority is proportional, and the output stays valid JSON.
+cases:
+  - id: billing-upgrade
+    description: Enterprise account upgrade request
+    inputs:
+      ticket: "We need 20 more seats added before renewal next week."
+      tier: enterprise
+      expected_queue: billing
+  - id: security-incident
+    description: Suspected account compromise
+    inputs:
+      ticket: "We saw unknown logins from two countries overnight. Please investigate."
+      tier: enterprise
+      expected_queue: security
+  - id: onboarding-howto
+    description: Basic getting started question
+    inputs:
+      ticket: "How do I invite a new teammate into our workspace?"
+      tier: self-serve
+      expected_queue: onboarding
+

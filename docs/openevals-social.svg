@@ -1,0 +1,14 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F6F0E5"/>
+  <circle cx="182" cy="140" r="180" fill="#C8572A" fill-opacity="0.15"/>
+  <circle cx="1072" cy="88" r="180" fill="#0D5D56" fill-opacity="0.15"/>
+  <rect x="72" y="86" width="1056" height="460" rx="36" fill="white" stroke="#121212" stroke-opacity="0.08"/>
+  <text x="118" y="175" fill="#121212" font-family="Space Grotesk, sans-serif" font-size="28" letter-spacing="8">OPENEVALS</text>
+  <text x="118" y="252" fill="#121212" font-family="Space Grotesk, sans-serif" font-size="74" font-weight="700">Open-source UI for</text>
+  <text x="118" y="336" fill="#121212" font-family="Space Grotesk, sans-serif" font-size="74" font-weight="700">prompt evals and regressions</text>
+  <rect x="118" y="392" width="436" height="96" rx="24" fill="#121212"/>
+  <text x="158" y="447" fill="white" font-family="IBM Plex Mono, monospace" font-size="28">gpt-4o   84.0   +6.5</text>
+  <rect x="580" y="392" width="410" height="96" rx="24" fill="#F6F0E5" stroke="#121212" stroke-opacity="0.08"/>
+  <text x="620" y="447" fill="#121212" font-family="IBM Plex Mono, monospace" font-size="28">gpt-4.1  89.5  +12.0</text>
+</svg>
+

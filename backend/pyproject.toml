@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.24.2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "openevals"
+version = "0.1.0"
+description = "Open-source eval studio for OpenAI model comparisons."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "OpenEvals contributors" }
+]
+dependencies = [
+  "cryptography>=44.0.0",
+  "dramatiq[redis]>=1.17.1",
+  "fastapi>=0.115.6",
+  "httpx>=0.28.1",
+  "jsonschema>=4.23.0",
+  "openai>=1.61.0",
+  "psycopg[binary]>=3.2.3",
+  "pydantic-settings>=2.7.1",
+  "pyyaml>=6.0.2",
+  "sqlalchemy>=2.0.36",
+  "uvicorn[standard]>=0.32.1"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.4",
+  "pytest-asyncio>=0.25.0"
+]
+
+[project.scripts]
+openevals = "openevals_runner.cli:main"
+openevals-worker = "openevals_api.worker:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["openevals_api", "openevals_runner"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+

@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: openevals
+      POSTGRES_PASSWORD: openevals
+      POSTGRES_DB: openevals
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: ./backend
+    env_file:
+      - .env
+    environment:
+      OPENEVALS_DATABASE_URL: postgresql+psycopg://openevals:openevals@postgres:5432/openevals
+      OPENEVALS_REDIS_URL: redis://redis:6379/0
+      OPENEVALS_FRONTEND_ORIGIN: http://localhost:5173
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8000:8000"
+
+  worker:
+    build:
+      context: ./backend
+    command: ["uv", "run", "openevals-worker"]
+    env_file:
+      - .env
+    environment:
+      OPENEVALS_DATABASE_URL: postgresql+psycopg://openevals:openevals@postgres:5432/openevals
+      OPENEVALS_REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - postgres
+      - redis
+
+  web:
+    build:
+      context: ./frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+    depends_on:
+      - api
+    ports:
+      - "5173:5173"
+
+volumes:
+  postgres-data:
+
