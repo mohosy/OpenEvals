@@ -3,6 +3,7 @@ description: Suggest or contribute a public eval suite other people can run and 
 title: "[benchmark] "
 labels:
   - enhancement
+  - benchmark-suite
 body:
   - type: markdown
     attributes:
@@ -43,4 +44,3 @@ body:
       options:
         - label: I can contribute the YAML suite in a pull request
         - label: I can help validate outputs on real-world cases
-
